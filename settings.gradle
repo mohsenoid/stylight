@@ -1,0 +1,3 @@
+include ':stylight-app', ':stylight-core'
+project(':stylight-app').projectDir = new File('app')
+project(':stylight-core').projectDir = new File('core-lib')

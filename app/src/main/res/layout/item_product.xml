@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="product"
+            type="com.stylight.api.model.Product" />
+
+        <import type="java.lang.Double" />
+
+        <import type="android.text.Html" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@{Html.fromHtml(product.name)}"
+                android:scaleType="fitCenter"
+                android:src="@drawable/default_image"
+                app:imageUrl="@{product.images.get(0).url}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
+                android:paddingTop="8dp"
+                android:text="@{Html.fromHtml(product.name)}"
+                android:textAlignment="center"
+                android:textAppearance="@style/textAppearanceListItemText"
+                tools:text="Product name" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:paddingBottom="8dp"
+                android:text="@{Double.toString(product.price) + product.currency.symbol}"
+                android:textAlignment="center"
+                android:textAppearance="@style/textAppearanceListItemText"
+                tools:text="Product price" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

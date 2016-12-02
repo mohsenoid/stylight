@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Stylight</string>
+    <string name="main_title">Stylight - Main</string>
+    <string name="check_these_out">Check these out</string>
+    <string name="new_and_trending_products">New and trending products</string>
+    <string name="the_latest_fashion_news">The latest fashion news</string>
+    <string name="get_up_to_date">Get up to date</string>
+    <string name="the_coolest_lamps">The coolest lamps</string>
+    <string name="the_latest_lifestyle_news">The latest lifestyle news</string>
+    <string name="no_products_available">No products available</string>
+    <string name="offline_message">No internet connection, Offline data!</string>
+    <string name="go_online">Go Online</string>
+</resources>
