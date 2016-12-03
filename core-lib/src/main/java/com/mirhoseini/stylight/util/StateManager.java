@@ -1,7 +1,7 @@
 package com.mirhoseini.stylight.util;
 
 /**
- * Created by Mohsen on 18/11/2016.
+ * Created by Mohsen on 02/12/2016.
  */
 
 public interface StateManager {

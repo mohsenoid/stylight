@@ -68,19 +68,11 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     ViewGroup empty;
     @BindView(R.id.retry)
     ViewGroup retry;
-
-    @OnClick(R.id.retry)
-    void onRetryClick() {
-        loadData();
-    }
-
     private CompositeSubscription subscriptions = new CompositeSubscription();
-
     private int itemCounts = 8;
     private int categoryId;
     private String titleText;
     private String subtitleText;
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -97,6 +89,11 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
         args.putString(ARG_SUBTITLE, subtitle);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @OnClick(R.id.retry)
+    void onRetryClick() {
+        loadData();
     }
 
     @Override

@@ -8,7 +8,6 @@ import com.mirhoseini.stylight.util.AppStateManager;
 import com.mirhoseini.stylight.util.Constants;
 import com.mirhoseini.stylight.util.SchedulerProvider;
 import com.mirhoseini.stylight.util.StateManager;
-import com.mirhoseini.utils.Utils;
 
 import java.io.File;
 
