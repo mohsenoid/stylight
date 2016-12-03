@@ -1,5 +1,6 @@
 package com.mirhoseini.stylight;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -52,6 +53,8 @@ public class MainActivity extends BaseActivity implements BaseView, PostsFragmen
     private ProductsFragment lampProductsFragment;
     private PostsFragment fashionPostsFragment;
     private PostsFragment lifestylePostsFragment;
+    private AlertDialog offlineDialog;
+    private Snackbar offlineSnackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,17 @@ public class MainActivity extends BaseActivity implements BaseView, PostsFragmen
         }
 
         Timber.d("Main Activity Created");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (null != offlineDialog)
+            offlineDialog.dismiss();
+
+        if (null != offlineSnackbar)
+            offlineSnackbar.dismiss();
     }
 
     private void findFragments() {
@@ -117,13 +131,19 @@ public class MainActivity extends BaseActivity implements BaseView, PostsFragmen
     }
 
     @Override
-    public void showOfflineMessage() {
-        Timber.d("Showing Offline Message");
-
-        Snackbar.make(toolbar, R.string.offline_message, Snackbar.LENGTH_LONG)
-                .setAction(R.string.go_online, v -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)))
-                .setActionTextColor(Color.GREEN)
-                .show();
+    public void showOfflineMessage(boolean isForce) {
+        if (isForce) {
+            if (null == offlineDialog || !offlineDialog.isShowing())
+                offlineDialog = Utils.showNoInternetConnectionDialog(this, true);
+        } else {
+            if (null == offlineSnackbar || !offlineSnackbar.isShown()) {
+                offlineSnackbar = Snackbar.make(toolbar, R.string.offline_message, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.go_online, v -> startActivity(new Intent(
+                                Settings.ACTION_WIFI_SETTINGS)))
+                        .setActionTextColor(Color.GREEN);
+                offlineSnackbar.show();
+            }
+        }
     }
 
 

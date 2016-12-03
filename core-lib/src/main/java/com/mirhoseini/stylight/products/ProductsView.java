@@ -16,8 +16,6 @@ interface ProductsView extends BaseView {
 
     void showRetryMessage(Throwable throwable);
 
-    void showError(Throwable throwable);
-
     void showProgress();
 
     void hideProgress();

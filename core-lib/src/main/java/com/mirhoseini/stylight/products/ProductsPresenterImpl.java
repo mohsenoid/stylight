@@ -50,22 +50,18 @@ class ProductsPresenterImpl implements ProductsPresenter {
                                 view.setProducts(productsResponse.getProducts());
 
                                 if (!isConnected)
-                                    view.showOfflineMessage();
+                                    view.showOfflineMessage(false);
                             }
                         },
                         // handle exceptions
                         throwable -> {
                             if (null != view) {
                                 view.hideProgress();
-                            }
 
-                            if (isConnected) {
-                                if (null != view) {
+                                if (isConnected) {
                                     view.showRetryMessage(throwable);
-                                }
-                            } else {
-                                if (null != view) {
-                                    view.showOfflineMessage();
+                                } else {
+                                    view.showOfflineMessage(true);
                                 }
                             }
                         });

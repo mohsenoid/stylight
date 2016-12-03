@@ -170,9 +170,18 @@ public class PostsFragment extends BaseFragment implements PostsView {
     }
 
     @Override
-    public void showOfflineMessage() {
+    public void showOfflineMessage(boolean isForce) {
+        if(isForce) {
+            title.setVisibility(View.GONE);
+            subtitle.setVisibility(View.GONE);
+            list.setVisibility(View.GONE);
+            empty.setVisibility(View.GONE);
+
+            retry.setVisibility(View.GONE);
+        }
+
         if (null != listener) {
-            listener.showOfflineMessage();
+            listener.showOfflineMessage(isForce);
         }
     }
 
@@ -218,8 +227,12 @@ public class PostsFragment extends BaseFragment implements PostsView {
 
     @Override
     public void showProgress() {
+        title.setVisibility(View.VISIBLE);
+        subtitle.setVisibility(View.VISIBLE);
+
         retry.setVisibility(View.GONE);
         empty.setVisibility(View.GONE);
+
         progress.setVisibility(View.VISIBLE);
     }
 

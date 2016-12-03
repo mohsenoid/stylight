@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mirhoseini.stylight.ApplicationComponent;
 import com.mirhoseini.stylight.R;
@@ -28,7 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.subscriptions.CompositeSubscription;
-import timber.log.Timber;
 
 /**
  * Created by Mohsen on 02/12/2016.
@@ -73,6 +71,7 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     private int categoryId;
     private String titleText;
     private String subtitleText;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -170,17 +169,19 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     }
 
     @Override
-    public void showOfflineMessage() {
-        if (null != listener) {
-            listener.showOfflineMessage();
+    public void showOfflineMessage(boolean isForce) {
+        if(isForce) {
+            title.setVisibility(View.GONE);
+            subtitle.setVisibility(View.GONE);
+            list.setVisibility(View.GONE);
+            empty.setVisibility(View.GONE);
+
+            retry.setVisibility(View.GONE);
         }
-    }
 
-    @Override
-    public void showError(Throwable throwable) {
-        Timber.e(throwable, "Error!");
-
-        Toast.makeText(context, throwable.getMessage(), Toast.LENGTH_LONG).show();
+        if (null != listener) {
+            listener.showOfflineMessage(isForce);
+        }
     }
 
     private void initRecyclerView() {
@@ -218,8 +219,12 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
 
     @Override
     public void showProgress() {
+        title.setVisibility(View.VISIBLE);
+        subtitle.setVisibility(View.VISIBLE);
+
         retry.setVisibility(View.GONE);
         empty.setVisibility(View.GONE);
+
         progress.setVisibility(View.VISIBLE);
     }
 
