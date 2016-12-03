@@ -66,7 +66,7 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
-    private int itemCounts = 3;
+    private int itemCounts = 8;
     private int categoryId;
     private String titleText;
     private String subtitleText;
@@ -136,7 +136,7 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     @Override
     protected void injectDependencies(ApplicationComponent component, Context context) {
         component
-                .plus(new AppProductsModule(context, this))
+                .plus(new AppProductsModule(context, this, itemCounts))
                 .inject(this);
     }
 
@@ -175,9 +175,7 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     private void initRecyclerView() {
         list.setLayoutManager(layoutManager);
         list.addItemDecoration(gridSpacingItemDecoration);
-        list.getLayoutManager().setAutoMeasureEnabled(true);
         list.setNestedScrollingEnabled(false);
-        list.setHasFixedSize(false);
     }
 
     @Override

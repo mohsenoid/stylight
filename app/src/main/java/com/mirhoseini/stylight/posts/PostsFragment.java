@@ -136,7 +136,7 @@ public class PostsFragment extends BaseFragment implements PostsView {
     @Override
     protected void injectDependencies(ApplicationComponent component, Context context) {
         component
-                .plus(new AppPostsModule(context, this))
+                .plus(new AppPostsModule(context, this, 1))
                 .inject(this);
     }
 
@@ -175,9 +175,7 @@ public class PostsFragment extends BaseFragment implements PostsView {
     private void initRecyclerView() {
         list.setLayoutManager(layoutManager);
         list.addItemDecoration(gridSpacingItemDecoration);
-        list.getLayoutManager().setAutoMeasureEnabled(true);
         list.setNestedScrollingEnabled(false);
-        list.setHasFixedSize(false);
     }
 
     @Override

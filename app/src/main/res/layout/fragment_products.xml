@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/keyLine1" />
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -36,6 +30,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@android:color/black"
         tools:text="@string/new_and_trending_products" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/keyLine1" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"

@@ -19,11 +19,13 @@ public class AppPostsModule extends PostsModule {
 
     private final Context context;
     private final PostsFragment.OnListFragmentInteractionListener listener;
+    private final int spanCount;
 
-    AppPostsModule(Context context, PostsFragment fragment) {
+    AppPostsModule(Context context, PostsFragment fragment, int spanCount) {
         super(fragment);
 
         this.context = context;
+        this.spanCount = spanCount;
 
         if (context instanceof ProductsFragment.OnListFragmentInteractionListener) {
             listener = (PostsFragment.OnListFragmentInteractionListener) context;
@@ -48,7 +50,7 @@ public class AppPostsModule extends PostsModule {
     @Provides
     @Posts
     public GridSpacingItemDecoration provideGridSpacingItemDecoration() {
-        return new GridSpacingItemDecoration(1, AppConstants.RECYCLER_VIEW_ITEM_SPACE, true, 1);
+        return new GridSpacingItemDecoration(spanCount, AppConstants.RECYCLER_VIEW_ITEM_SPACE, true, 0);
     }
 
 }
