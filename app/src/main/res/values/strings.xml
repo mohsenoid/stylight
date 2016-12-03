@@ -8,6 +8,8 @@
     <string name="the_coolest_lamps">The coolest lamps</string>
     <string name="the_latest_lifestyle_news">The latest lifestyle news</string>
     <string name="no_products_available">No products available</string>
+    <string name="no_posts_available">No posts available</string>
     <string name="offline_message">No internet connection, Offline data!</string>
     <string name="go_online">Go Online</string>
+    <string name="retry_loading_data">Retry loading data</string>
 </resources>

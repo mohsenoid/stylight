@@ -26,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
@@ -63,6 +64,15 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     ProgressBar progress;
     @BindView(R.id.list)
     RecyclerView list;
+    @BindView(R.id.empty)
+    ViewGroup empty;
+    @BindView(R.id.retry)
+    ViewGroup retry;
+
+    @OnClick(R.id.retry)
+    void onRetryClick() {
+        loadData();
+    }
 
     private CompositeSubscription subscriptions = new CompositeSubscription();
 
@@ -130,6 +140,10 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     public void onResume() {
         super.onResume();
 
+        loadData();
+    }
+
+    private void loadData() {
         presenter.loadProducts(Utils.isConnected(context), categoryId, itemCounts);
     }
 
@@ -181,26 +195,34 @@ public class ProductsFragment extends BaseFragment implements ProductsView {
     @Override
     public void setProducts(List<Product> products) {
         if (products.size() > 0) {
-            title.setVisibility(View.VISIBLE);
-            subtitle.setVisibility(View.VISIBLE);
             list.setVisibility(View.VISIBLE);
+
+            retry.setVisibility(View.GONE);
+            empty.setVisibility(View.GONE);
 
             adapter.setProducts(products);
             list.setAdapter(adapter);
         } else {
-            title.setVisibility(View.GONE);
-            subtitle.setVisibility(View.GONE);
+            // no data
             list.setVisibility(View.GONE);
+
+            retry.setVisibility(View.GONE);
+            empty.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void showRetryMessage(Throwable throwable) {
+        list.setVisibility(View.GONE);
+        empty.setVisibility(View.GONE);
 
+        retry.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgress() {
+        retry.setVisibility(View.GONE);
+        empty.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
     }
 

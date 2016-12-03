@@ -43,13 +43,13 @@ public class AppPostsModule extends PostsModule {
 
     @Provides
     @Posts
-    public LinearLayoutManager provideLayoutManager() {
+    LinearLayoutManager provideLayoutManager() {
         return new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
     }
 
     @Provides
     @Posts
-    public GridSpacingItemDecoration provideGridSpacingItemDecoration() {
+    GridSpacingItemDecoration provideGridSpacingItemDecoration() {
         return new GridSpacingItemDecoration(spanCount, AppConstants.RECYCLER_VIEW_ITEM_SPACE, true, 0);
     }
 

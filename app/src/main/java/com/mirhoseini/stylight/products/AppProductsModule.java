@@ -42,13 +42,13 @@ public class AppProductsModule extends ProductsModule {
 
     @Provides
     @Products
-    public LinearLayoutManager provideLayoutManager() {
+    LinearLayoutManager provideLayoutManager() {
         return new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
     }
 
     @Provides
     @Products
-    public GridSpacingItemDecoration provideGridSpacingItemDecoration() {
+    GridSpacingItemDecoration provideGridSpacingItemDecoration() {
         return new GridSpacingItemDecoration(spanCount, AppConstants.RECYCLER_VIEW_ITEM_SPACE, true, 0);
     }
 
