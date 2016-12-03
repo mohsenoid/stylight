@@ -44,7 +44,7 @@
                 android:layout_toEndOf="@+id/image"
                 android:layout_toRightOf="@+id/image"
                 android:padding="8dp"
-                android:text="@{post.postCategory.name}"
+                android:text="@{post.category.name}"
                 android:textAppearance="@style/textAppearanceListItemText"
                 android:textColor="@{Color.parseColor('#' + post.category.color)}"
                 tools:text="Category" />
