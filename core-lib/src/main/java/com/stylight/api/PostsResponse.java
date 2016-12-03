@@ -16,9 +16,6 @@ public class PostsResponse {
     @SerializedName("posts")
     @Expose
     private List<Post> posts = new ArrayList<>();
-    @SerializedName("featuredPosts")
-    @Expose
-    private List<Post> featuredPosts = new ArrayList<>();
     @SerializedName("start")
     @Expose
     private int start;
@@ -35,9 +32,8 @@ public class PostsResponse {
     public PostsResponse() {
     }
 
-    public PostsResponse(List<Post> posts, List<Post> featuredPosts, int start, int count, int totalCount, String next) {
+    public PostsResponse(List<Post> posts, int start, int count, int totalCount, String next) {
         this.posts = posts;
-        this.featuredPosts = featuredPosts;
         this.start = start;
         this.count = count;
         this.totalCount = totalCount;
@@ -50,14 +46,6 @@ public class PostsResponse {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
-    }
-
-    public List<Post> getFeaturedPosts() {
-        return featuredPosts;
-    }
-
-    public void setFeaturedPosts(List<Post> featuredPosts) {
-        this.featuredPosts = featuredPosts;
     }
 
     public int getStart() {

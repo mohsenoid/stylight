@@ -19,7 +19,8 @@ android {
         }
 
         /* replaced with custom MockTestRunner */
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.mirhoseini.stylight.StylightTestRunner"
     }
 
     buildTypes {

@@ -96,9 +96,9 @@ public class MainActivity extends BaseActivity implements BaseView, PostsFragmen
 
     private void createFragments() {
         fashionProductsFragment = ProductsFragment.newInstance(AppConstants.PRODUCTS_COUNT, Constants.CLOTHING_PRODUCTS_CATEGORY_ID, resources.getString(R.string.check_these_out), resources.getString(R.string.new_and_trending_products));
-        fashionPostsFragment = PostsFragment.newInstance(AppConstants.POSTS_COUNT, Constants.FASHION_POSTS_CATEGORY_SLUG_CLOTHING, resources.getString(R.string.the_latest_fashion_news), resources.getString(R.string.get_up_to_date));
+        fashionPostsFragment = PostsFragment.newInstance(AppConstants.POSTS_COUNT, Constants.FASHION_POSTS_CATEGORY_SLUG, resources.getString(R.string.the_latest_fashion_news), resources.getString(R.string.get_up_to_date));
         lampProductsFragment = ProductsFragment.newInstance(AppConstants.PRODUCTS_COUNT, Constants.LAMPS_PRODUCTS_CATEGORY_ID, resources.getString(R.string.the_coolest_lamps), resources.getString(R.string.new_and_trending_products));
-        lifestylePostsFragment = PostsFragment.newInstance(AppConstants.POSTS_COUNT, Constants.LIFESTYLE_POSTS_CATEGORY_SLUG_CLOTHING, resources.getString(R.string.the_latest_lifestyle_news), resources.getString(R.string.get_up_to_date));
+        lifestylePostsFragment = PostsFragment.newInstance(AppConstants.POSTS_COUNT, Constants.LIFESTYLE_POSTS_CATEGORY_SLUG, resources.getString(R.string.the_latest_lifestyle_news), resources.getString(R.string.get_up_to_date));
     }
 
     @Override
