@@ -14,4 +14,5 @@ public class AppConstants extends Constants {
     public static final int PRODUCTS_COUNT = 8;
     public static final int POSTS_COUNT = 3;
 
+    public static final int API_RETRY_COUNT = 3;
 }

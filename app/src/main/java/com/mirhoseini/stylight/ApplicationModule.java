@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.mirhoseini.stylight.util.AppConstants;
 import com.mirhoseini.stylight.util.AppSchedulerProvider;
+import com.mirhoseini.stylight.util.AppStateManager;
 import com.mirhoseini.stylight.util.Constants;
 import com.mirhoseini.stylight.util.SchedulerProvider;
+import com.mirhoseini.stylight.util.StateManager;
 import com.mirhoseini.utils.Utils;
 
 import java.io.File;
@@ -78,12 +80,6 @@ public class ApplicationModule {
     }
 
     @Provides
-    @Named("isConnect")
-    boolean provideIsConnect(Context context) {
-        return Utils.isConnected(context);
-    }
-
-    @Provides
     @Singleton
     @Named("apiKey")
     String provideApiKey() {
@@ -95,5 +91,18 @@ public class ApplicationModule {
     @Named("local")
     String provideLocal() {
         return AppConstants.LOCALE_DE;
+    }
+
+    @Provides
+    @Singleton
+    StateManager provideStateManager(AppStateManager stateManager) {
+        return stateManager;
+    }
+
+    @Provides
+    @Singleton
+    @Named("retryCount")
+    int provideApiRetryCount() {
+        return AppConstants.API_RETRY_COUNT;
     }
 }
