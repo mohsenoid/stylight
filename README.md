@@ -68,7 +68,7 @@ Layers communications are managed by [RxJava](https://github.com/ReactiveX/RxJav
 
 Dependency Injections (DI) are being managed by [Dagger](https://github.com/google/dagger) created by [Square](http://square.github.io) and now maintained by [Google](http://google.github.io/dagger/).
 
-![Diagram](diagram.png)
+![Diagram](diagram.jpg)
 
 Some minor Android common functions are managed using [AndroidUtils](https://github.com/mmirhoseini/android_utils) library, developed and published on jCenter by [myself](http://mirhoseini.com).
 
